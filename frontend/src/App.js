@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import University from "./components/university";
 import Login from "./components/login";
@@ -40,8 +40,13 @@ function App() {
             </Link>
           </li>
           <li className="nav-item">
-            { user ? (
-              <a href="/logout" onClick={logout} className="nav-link" style={{cursor: 'pointer'}}>
+            {user ? (
+              <a
+                href="/logout"
+                onClick={logout}
+                className="nav-link"
+                style={{ cursor: "pointer" }}
+              >
                 Logout {user.name}
               </a>
             ) : (
@@ -55,23 +60,18 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route exact path={"/"} element={<UniversityList/>} />
-          <Route exact path={"/universities"} element={<UniversityList/>} />
+          <Route exact path={"/"} element={<UniversityList />} />
+          <Route exact path={"/universities"} element={<UniversityList />} />
           <Route
             path="/universities/:id"
-            render={(props) => (
-              <University {...props}/>
-            )}
+            render={(props) => <University {...props} />}
           />
           <Route
             path="/login"
-            render={(props) => (
-              <Login {...props} login={login} />
-            )}
+            render={(props) => <Login {...props} login={login} />}
           />
         </Routes>
       </div>
-
     </div>
   );
 }

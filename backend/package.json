@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "description": "GraphQL API layer",
   "main": "index.js",
-  "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "pg": "^8.7.3",
+    "sequelize": "^6.17.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/register": "^7.17.0",
+    "nodemon": "^1.18.9",
+    "sequelize-cli": "^6.4.1"
   },
   "scripts": {
-    "dev": "nodemon -L index.js",
+    "dev": "nodemon -L '@babel/register' index.js",
     "start": "node index.js"
   },
   "author": "",

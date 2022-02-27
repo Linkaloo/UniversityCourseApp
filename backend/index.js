@@ -1,14 +1,14 @@
-import app from "./server.js"
-import dotenv from "dotenv"
-import UniveristiesDAO from "./dao/universitiesDAO.js"
+import dotenv from "dotenv";
+import app from "./src/server";
+// import UniveristiesDAO from "./dao/universitiesDAO";
 
-dotenv.config()
+dotenv.config();
 
 const port = process.env.PORT;
 app.listen(port, () => {
-    console.log(`listening on port: ${port}`);
+  console.log(`listening on port: ${port}`);
 });
 
-app.get('/', (req, res) => {
-    res.send('test');
+app.get("/", (req, res) => {
+  res.send("test");
 });
