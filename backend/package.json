@@ -1,23 +1,21 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "GraphQL API layer",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "mongodb": "^4.4.0"
+    "express": "^4.16.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+    "nodemon": "^1.18.9"
+  },
+  "scripts": {
+    "dev": "nodemon -L index.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "UNLICENSED"
 }

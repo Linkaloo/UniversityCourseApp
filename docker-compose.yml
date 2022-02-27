@@ -1,0 +1,29 @@
+version: "3.2"
+services:
+  postgres:
+    image: postgres:14.2
+    env_file:
+      - shared.env
+    ports:
+      - '0.0.0.0:5432:5432'
+  backend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/backend.Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      PORT: 3000
+    ports:
+      - '0.0.0.0:3001:3000'
+  frontend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/frontend.Dockerfile
+    depends_on:
+      - backend
+    environment:
+      PORT: 3000
+      BACKEND_URL: http://localhost:3001
+    ports:
+      - '0.0.0.0:3000:3000'

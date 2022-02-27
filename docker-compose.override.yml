@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+  backend:
+    volumes:
+      - ./backend:/usr/src/app:delegated
+      - /usr/src/app/node_modules
+  frontend:
+    volumes:
+      - ./frontend:/usr/src/app:delegated
+      - /usr/src/app/node_modules
