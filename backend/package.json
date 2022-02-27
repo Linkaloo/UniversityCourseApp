@@ -13,13 +13,14 @@
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.0",
     "nodemon": "^1.18.9",
     "sequelize-cli": "^6.4.1"
   },
   "scripts": {
-    "dev": "nodemon -L '@babel/register' index.js",
+    "dev": "nodemon -L --exec babel-node index.js",
     "start": "node index.js"
   },
   "author": "",
