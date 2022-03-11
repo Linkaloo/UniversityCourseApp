@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import University from "./components/university";
 import Login from "./components/login";
 import UniversityList from "./components/university-list";
+import Home from "./components/home";
 
 function App() {
   const [user, setUser] = React.useState(null); // react hook
@@ -20,7 +21,7 @@ function App() {
   return (
     <div>
       <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/university-catalog" className="navbar-brand">
+        <a href="/" className="navbar-brand">
           University Catalog
         </a>
         <div class="navbar-nav mr-auto">
@@ -60,7 +61,7 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route exact path={"/"} element={<UniversityList />} />
+          <Route exact path={"/"} element={<Home />} />
           <Route exact path={"/universities"} element={<UniversityList />} />
           <Route
             path="/universities/:id"

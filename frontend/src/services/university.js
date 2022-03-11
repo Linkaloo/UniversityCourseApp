@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class UniversityDataService {
   getAll(page = 0) {
-    return http.get(`?page=${page}`);
+    return http.get();
   }
 
   get(id) {

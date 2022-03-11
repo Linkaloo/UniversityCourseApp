@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import UniversityDataService from "../services/university";
-//import { Link } from "react-router-dom";
 
 const UniversityList = (props) => {
   const [universities, setUniversities] = useState([]);
   const [searchName, setSearchName] = useState("");
-  const [searchZip, setSearchZip] = useState("");
 
   useEffect(() => {
     retrieveUniversities();
@@ -14,11 +13,6 @@ const UniversityList = (props) => {
   const onChangeSearchName = (e) => {
     const searchName = e.target.value;
     setSearchName(searchName);
-  };
-
-  const onChangeSearchZip = (e) => {
-    const searchZip = e.target.value;
-    setSearchZip(searchZip);
   };
 
   const retrieveUniversities = () => {
@@ -35,7 +29,6 @@ const UniversityList = (props) => {
   const find = (query, by) => {
     UniversityDataService.find(query, by)
       .then((response) => {
-        console.log(response.data);
         setUniversities(response.data.universities);
       })
       .catch((e) => {
@@ -45,10 +38,6 @@ const UniversityList = (props) => {
 
   const findByName = () => {
     find(searchName, "name");
-  };
-
-  const findByZip = () => {
-    find(searchZip, "zipcode");
   };
 
   return (
@@ -74,38 +63,19 @@ const UniversityList = (props) => {
         </div>
       </div>
 
-      <div className="input-group col-lg-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search by zip"
-          value={searchZip}
-          onChange={onChangeSearchZip}
-        />
-        <div className="input-group-append">
-          <button
-            className="btn btn-outline-secondary"
-            type="button"
-            onClick={findByZip}
-          >
-            Search
-          </button>
-        </div>
-      </div>
-
       <div className="row">
         {universities.map((university) => {
-          const address = `${university.zipcode}`;
+          const {name} = university
           return (
             <div className="col-lg-4 pb-1">
               <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">{university.name}</h5>
-                  <p className="card-text">
-                    <strong>Address: </strong>
-                    {address}
-                  </p>
-                </div>
+                <Link to={"/university"}>
+                  <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                    <p className="card-text">
+                    </p>
+                  </div>
+                </Link>
               </div>
             </div>
           );

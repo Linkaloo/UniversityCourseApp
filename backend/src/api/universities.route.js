@@ -1,8 +1,8 @@
 import express from "express";
-import UniversitiesCtrl from "./universities.controller";
+import controllers from "./universities.controller";
 
 const router = express.Router();
 
-router.route("/").get(UniversitiesCtrl.apiGetUniversities);
+router.route("/").get(controllers.apiGetUniversities);
 
 export default router;
