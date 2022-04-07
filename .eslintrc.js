@@ -17,5 +17,7 @@ module.exports = {
     quotes: ["error", "double"],
     "no-unused-vars": "warn",
     "import/no-unresolved": "warn",
+    "no-shadow": "warn",
+    "linebreak-style": "off",
   },
 };

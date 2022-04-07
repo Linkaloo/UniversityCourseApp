@@ -10,9 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-     // Degree.belongsTo(models.Department);
-     // Degree.hasMany(models.Course);
     }
   }
   Degree.init({
@@ -29,12 +26,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    department_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      model: "department",
-      key: "id",
-    }
   }, {
     sequelize,
     modelName: 'Degree',

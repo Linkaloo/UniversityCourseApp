@@ -19,7 +19,7 @@ module.exports = {
       updated_at: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
     });
 
     await queryInterface.createTable('address', {
@@ -41,7 +41,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       zip: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       country: {
         type: Sequelize.STRING,
@@ -50,6 +50,7 @@ module.exports = {
       university_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        onDelete: "CASCADE",
         references: {
           model: "university",
           key: "id",
@@ -76,14 +77,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      university_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "university",
-          key: "id",
-        }
-      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -92,6 +85,25 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    });
+
+    await queryInterface.createTable('university_departments', {
+      university_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "university",
+          key: "id",
+        }
+      },
+      department_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "department",
+          key: "id",
+        }
+      },
     });
 
     await queryInterface.createTable('degree', {
@@ -141,13 +153,6 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      degree_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "degree",
-          key: "id",
-        }
-      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -156,6 +161,25 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    });
+
+    await queryInterface.createTable('degree_courses', {
+      degree_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "degree",
+          key: "id",
+        }
+      },
+      course_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "course",
+          key: "id",
+        }
+      },
     });
 
   },

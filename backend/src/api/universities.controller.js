@@ -38,4 +38,30 @@ const apiGetUniversities = async (req, res) => {
   return res.json(response);
 };
 
-export default { apiGetUniversities };
+const apiCreateUniversity = async (req, res) => {
+  const university = req.body;
+  let response;
+
+  try {
+    const newUniversity = await db.University.create(university, { include: [db.Address] });
+    response = newUniversity;
+  } catch (err) {
+    console.log(err);
+    response = {
+      error: err,
+    };
+  }
+
+  return res.json(response);
+};
+
+const apiDeleteUniversity = async (req, res) => {
+  const des = await db.University.destroy({ where: { id: req.params.id } });
+
+  const response = {
+    total_deleted: des,
+  };
+  return res.json(response);
+};
+
+export default { apiGetUniversities, apiCreateUniversity, apiDeleteUniversity };

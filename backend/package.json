@@ -21,6 +21,7 @@
   },
   "scripts": {
     "run-migrations": "npx sequelize-cli db:migrate",
+    "run-seeds": "npx sequelize-cli db:seed:all",
     "dev": "nodemon -L --exec babel-node index.js",
     "start": "node index.js"
   },

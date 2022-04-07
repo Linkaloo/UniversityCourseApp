@@ -10,9 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-      University.hasOne(models.Address);
-      University.hasOne(models.Department);
     }
   }
   University.init({
@@ -30,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'University',
     tableName: "university",
     timestampes: true,
-    underscored: true
+    underscored: true,
   });
   return University;
 };

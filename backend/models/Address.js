@@ -10,8 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-    //  Address.belongsTo(models.University);
     }
   }
   Address.init({
@@ -32,18 +30,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     zip: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     country: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    university_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      model: "university",
-      key: "id",
-    }
   }, {
     sequelize,
     modelName: 'Address',

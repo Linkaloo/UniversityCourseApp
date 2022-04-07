@@ -22,12 +22,21 @@ fs
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
+  
+db.University.hasOne(db.Address, {onDelete: "cascade"}); 
+//db.Address.belongsTo(db.University, {onDelete: "cascade"}); 
 
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+const UniversityDepartment = sequelize.define("university_department", {}, {timestamps: false});
+db.University.belongsToMany(db.Department, {through: "university_department", foreignKey: "university_id"});
+db.Department.belongsToMany(db.University, {through: "university_department", foreignKey: "department_id"});
+
+db.Department.hasMany(db.Degree);
+db.Degree.belongsTo(db.Department, {foreignKey: "department_id"})
+
+const DegreeCourse = sequelize.define("degree_course", {}, {timestamps: false});
+db.Degree.belongsToMany(db.Course, {through: "degree_course", foreignKey: "degree_id"});
+db.Course.belongsToMany(db.Degree, {through: "degree_course", foreignKey: "course_id"});
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
